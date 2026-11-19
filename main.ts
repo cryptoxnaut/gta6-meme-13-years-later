@@ -49,7 +49,7 @@ try {
 
 // --- the post's address ---------------------------------------------------
 const url = typeof post?.url === 'string' ? post.url : '';
-const xPostPattern = /^https?:\/\/(www\.|mobile\.)?(x\.com|twitter\.com)\/(i\/web\/)?status(es)?\/\d+$/;
+const xPostPattern = /^https?:\/\/(www\.|mobile\.)?(x\.com|twitter\.com)\/([A-Za-z0-9_]+\/status|i\/web\/status)\/\d+$/;
 if (url === POST_URL_PLACEHOLDER) {
   check(
     'post_url',
