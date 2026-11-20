@@ -1,6 +1,10 @@
 # GTA 6 meme: 13 years later
 
-An entry for the make.fun bounty "Post a GTA 6 meme on X" (gta6-meme-x-01).
+[![make.fun · gta6-meme-x-01](https://make.fun/badge/gta6-meme-x-01.svg)](https://make.fun/bounty/gta6-meme-x-01)
+[![rank](https://make.fun/badge/gta6-meme-x-01/cryptoxnaut/gta6-meme-13-years-later/rank.svg)](https://make.fun/bounty/gta6-meme-x-01/leaderboard)
+[![reward](https://make.fun/badge/gta6-meme-x-01/cryptoxnaut/gta6-meme-13-years-later/reward.svg)](https://make.fun/bounty/gta6-meme-x-01)
+
+An entry for the make.fun bounty [Post a GTA 6 meme on X](https://make.fun/bounty/gta6-meme-x-01) (gta6-meme-x-01).
 
 ## The joke
 
