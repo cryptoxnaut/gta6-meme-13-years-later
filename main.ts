@@ -7,7 +7,8 @@
 //   2. checks the entry's own files and prints a PASS / FAIL report:
 //      POST.json parses and is small enough, its url is either a real X post
 //      address or the clearly-marked placeholder that means "not posted
-//      yet", the post text carries the play code and make.fun (or @makefunai),
+//      yet", the handle named in POST.json is the handle in that address,
+//      the post text carries the play code and make.fun (or @makefunai),
 //      and the meme picture exists and is a real PNG / JPEG / WebP under the
 //      size limit.
 // It exits 0 when everything checks out (a placeholder url is a warning,
@@ -58,6 +59,34 @@ if (url === POST_URL_PLACEHOLDER) {
   );
 } else {
   check('post_url', xPostPattern.test(url), `url is an X post address: ${url || '(missing)'}`);
+}
+
+// --- the post's handle ----------------------------------------------------
+// The house refuses a post entered by another account, so the handle named
+// in POST.json must be the handle in the post's own address. A url for a
+// different handle would otherwise pass the checks above.
+const handle = typeof post?.handle === 'string' ? post.handle : '';
+const handleInUrl = url.match(
+  /^https?:\/\/(www\.|mobile\.)?(x\.com|twitter\.com)\/([A-Za-z0-9_]+)\/status\/\d+$/,
+)?.[3];
+if (url === POST_URL_PLACEHOLDER) {
+  check(
+    'post_handle',
+    true,
+    'handle check skipped until the post is up (url is still the placeholder)',
+  );
+} else if (handleInUrl === undefined) {
+  check(
+    'post_handle',
+    handle !== '',
+    'url is the i/web/status form, so no handle can be read from it; POST.json names a handle',
+  );
+} else {
+  check(
+    'post_handle',
+    handle !== '' && handle.toLowerCase() === handleInUrl.toLowerCase(),
+    `handle in POST.json (${handle || '(missing)'}) matches the handle in the url (${handleInUrl})`,
+  );
 }
 
 // --- the post's text ------------------------------------------------------
